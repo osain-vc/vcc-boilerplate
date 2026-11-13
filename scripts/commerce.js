@@ -14,6 +14,7 @@ import {
   readBlockConfig,
 } from './aem.js';
 import initializeDropins from './initializers/index.js';
+import { calculateEnvironment } from './utils.js';
 
 let consentGranted = false;
 
@@ -568,7 +569,8 @@ export async function fetchPlaceholders(path) {
  * @returns {Promise<Object>} - The config JSON from session storage
  */
 export async function getConfigFromSession() {
-  const configURL = `${window.location.origin}/config.json`;
+  const environment = calculateEnvironment();
+  const configURL = `${window.location.origin}/configs/${environment}.json`;
 
   try {
     const configJSON = window.sessionStorage.getItem('config');
