@@ -409,7 +409,10 @@ export function applyTemplates(doc) {
  * const updatedPlaceholders = await fetchPlaceholders();
  */
 export async function fetchPlaceholders(path) {
-  const rootPath = getRootPath();
+  const originalRootPath = getRootPath();
+  // Adjusting rootPath for U.S. site
+  const rootPath = originalRootPath === '/' ? '/us/' : originalRootPath;
+  console.log(`Fetching placeholders for path: ${path || 'none'}, rootPath: ${rootPath}`);
   const fallback = getMetadata('placeholders');
   window.placeholders = window.placeholders || {};
 
