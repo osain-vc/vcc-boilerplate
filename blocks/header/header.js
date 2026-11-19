@@ -179,7 +179,9 @@ export default async function decorate(block) {
 
   // load nav as fragment
   const navMeta = getMetadata('nav');
-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
+  const rootPath = getRootPath();
+  const pathPrefix = rootPath === '/' || rootPath === '' ? '/us' : rootPath;
+  const navPath = navMeta ? new URL(navMeta, window.location).pathname : `${pathPrefix.length > 1 ? pathPrefix : ''}/nav`;
   const fragment = await loadFragment(navPath);
 
   // decorate nav DOM
