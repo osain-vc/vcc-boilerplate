@@ -5,6 +5,7 @@
       "commerce-endpoint": "https://catalog-service-sandbox.adobe.io/graphql",
       "commerce-assets-enabled": true,
       "adobe-commerce-optimizer": false,
+      "commerce-free-gifts-enabled": false,
       "headers": {
         "all": {
           "Store": "default"
